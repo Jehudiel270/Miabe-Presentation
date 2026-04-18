@@ -10,7 +10,7 @@ import type {
   CourseWithDetails,
   CourseDetailResponse,
   FilterOptions,
-  Chapter,
+  ChapterDetail,
 } from "@/types/courses";
 
 /**
@@ -52,7 +52,7 @@ export async function fetchAllCourses(options?: FilterOptions) {
       (course: Course) => ({
         ...course,
         chapterCount: course.chapters?.length || 0,
-      })
+      }),
     );
 
     return {
@@ -164,7 +164,8 @@ export async function fetchCourseDetail(
 
     // Sort chapters by order
     const chapters = (courseData.chapters || []).sort(
-      (a: Chapter, b: Chapter) => a.order_index - b.order_index,
+      (a: ChapterDetail, b: ChapterDetail) =>
+        (a.order_index || 0) - (b.order_index || 0),
     );
 
     // Fetch user progress if userId provided
