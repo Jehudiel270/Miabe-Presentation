@@ -886,7 +886,7 @@ export default function BlockchainPage() {
               href="/"
               className="btn btn-ghost btn-lg rounded-2xl border border-base-300"
             >
-              Retour à l'accueil
+              Retour à l&apos;accueil
             </Link>
           </div>
         </div>
